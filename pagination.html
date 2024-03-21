@@ -8,94 +8,340 @@
     <style>
         @import url('https://fonts.cdnfonts.com/css/daydream');
         @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+
         body {
             background: rgb(255, 255, 255);
             background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 0.8134312913907285) 0%, rgba(185, 217, 235, 1) 100%);
             background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0.8134312913907285) 0%, rgba(185, 217, 235, 1) 100%);
             background: linear-gradient(0deg, rgba(255, 255, 255, 0.8134312913907285) 0%, rgba(185, 217, 235, 1) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#b9d9eb",GradientType=1);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#b9d9eb", GradientType=1);
             background-repeat: no-repeat;
         }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            text-decoration: none;
+        }
+
+        .title {
+            background-image: url(cuoco_420.jpg);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            padding: 2%;
+        }
+
+        .title>p {
+            color:rgb(79, 55, 150) ;
+            font-size: 30px;
+        }
+
+        .title>h1 {
+            font-size: 40px;
+            color:brown;
+        }
+        .custom-previous-button {
+            background-color: #C6BE00;
+            border-color: yellow;
+            color: #fff; 
+        }
+        .custom-next-button {
+            background-color: #C6BE00;
+            border-color: yellow;
+           
+            color: #fff;
+        }
+        .custom-page-link {
+            background-color: #83E3DD;
+            border-color: #83E3DD;
+            color: #fff; 
+        }
+        .custom-view-button {
+            background-color: #BD5521;
+            border-color: yellow;
+            border-radius: 20px; 
+        }
+        .custom-view-button1 {
+            background-color: white ;
+            border-color:yellow;
+            border-radius: 20px; 
+            color:#BD5521;
+
+        }
+        .comment {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .comment strong {
+            color: #007bff;
+        }
+        .buuu{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+        
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#addRecipeModal">Add Recipe</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Catégorie
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item category" href="#" data-category="PLATS PRINCIPAUX"
+                               style="background-color: aliceblue;">PLATS PRINCIPAUX</a></li>
+                        <li><a class="dropdown-item category" href="#" data-category="BURGERS">BURGERS</a></li>
+                        <li><a class="dropdown-item category" href="#" data-category="PATES ET RIZ">PATES ET RIZ</a>
+                        </li>
+                        <li><a class="dropdown-item category" href="#" data-category="BISCUITS">BISCUITS</a></li>
+                        <li><a class="dropdown-item category" href="#" data-category="DESSERTS">DESSERTS</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="comments.html">Voir les Commentaires</a>
+                </li>
+            </ul>
+         
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="title">
+    <h1>Catégories des recettes de cuisine :</h1>
+    <h2>Cette page est une mine d'inspiration culinaire, offrant une gamme variée de plats délicieux. Des recettes
+        simples aux créations gastronomiques, elle vous invite à explorer de nouvelles saveurs et à découvrir des idées
+        pour tous les goûts.</h2>
+</div>
 <div class="container">
     <h1>Recettes Populaires</h1>
     <div class="row" id="recipe-list">
     </div>
     <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            <li class="page-item" id="previous-button"><a class="page-link" href="#">Précédent</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item" id="next-button"><a class="page-link" href="#">Suivant</a></li>
+        <ul class="pagination justify-content-center" >
+            <li class="page-item" id="previous-button">
+                <a class="page-link custom-previous-button " href="#">Précédent</a>
+            </li>
+            <li class="page-item"><a class="page-link custom-page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link custom-page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link custom-page-link" href="#">3</a></li>
+            <li class="page-item" id="next-button">
+                <a class="page-link custom-next-button" href="#">Suivant</a>
+            </li>
         </ul>
     </nav>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Modal -->
+<div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addRecipeModalLabel">Add Recipe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addRecipeForm">
+                    <div class="mb-3">
+                        <label for="recipeTitle"></label>
+                        <input type="text" class="form-control" id="recipeTitle" placeholder="Titre de la recette" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeCategory" class="form-label">Catégorie:</label>
+                        <select class="form-select" id="recipeCategory" required>
+                            <option selected disabled>Sélectionner une catégorie</option>
+                            <option value="PLATS PRINCIPAUX">Plats Principaux</option>
+                            <option value="BURGERS">Burgers</option>
+                            <option value="PATES ET RIZ">Pâtes et Riz</option>
+                            <option value="BISCUITS">Biscuits</option>
+                            <option value="DESSERTS">Desserts</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeIngredients" class="form-label">Ingrédients:</label>
+                        <textarea class="form-control" id="recipeIngredients" placeholder="Ingrédients (séparés par des virgules)" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeSteps" class="form-label">Étapes:</label>
+                        <textarea class="form-control" id="recipeSteps" placeholder="Étapes de la recette (séparées par des retours à la ligne)" rows="5" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeImage" class="form-label">URL de l'image:</label>
+                        <input type="url" class="form-control" id="recipeImage" placeholder="URL de l'image" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" onclick="addRecipe()">Ajouter Recette</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 <script>
     // Exemple de données de recettes
-    const recipes = [
-        { id: 1,image: "https://via.placeholder.com/300", name: "Tarte aux pommes", rating: 4.5, description: "Délicieuse tarte aux pommes faite avec des pommes fraîches et une croûte croustillante." },
-        { id: 2,image: "https://via.placeholder.com/300", name: "Poulet rôti", rating: 4.0, description: "Poulet juteux rôti au four avec des herbes et des épices." },
-        { id: 3,image: "https://via.placeholder.com/300", name: "Salade César", rating: 3.8, description: "Salade croustillante aux feuilles de laitue, croûtons, parmesan et vinaigrette César." },
-        { id: 4,image: "https://via.placeholder.com/300", name: "Spaghetti bolognaise", rating: 4.2, description: "Spaghetti garni d'une sauce bolognaise maison savoureuse à la viande et aux tomates." },
-        { id: 5,image: "https://via.placeholder.com/300", name: "Muffins aux myrtilles", rating: 4.7, description: "Délicieux muffins moelleux remplis de myrtilles fraîches." },
-        { id: 6,image: "https://via.placeholder.com/300", name: "Sushi california", rating: 4.9, description: "Rouleaux de sushi remplis de crabe, d'avocat et de concombre, enveloppés dans du riz et de l'algue nori." },
-        { id: 7,image: "https://via.placeholder.com/300", name: "Soupe à l'oignon", rating: 3.5, description: "Soupe chaude et réconfortante à base d'oignons caramélisés et de bouillon de poulet." },
-        { id: 8,image: "https://via.placeholder.com/300", name: "Pancakes", rating: 4.3, description: "Délicieux pancakes moelleux servis avec du sirop d'érable et du beurre." },
-        { id: 9,image: "https://via.placeholder.com/300", name: "Risotto aux champignons", rating: 4.6, description: "Risotto crémeux aux champignons, cuit lentement avec du bouillon et du vin blanc." },
-        { id: 10,image: "https://via.placeholder.com/300", name: "Gâteau au chocolat", rating: 4.8, description: "Gâteau moelleux au chocolat noir avec un glaçage onctueux." }
+    let recipes = [
+        {id: 1, image: "https://via.placeholder.com/200", name: "Tarte aux pommes",Ingredients: "Tarte aux pommes",  description: "Délicieuse tarte aux pommes faite avec des pommes fraîches et une croûte croustillante." ,rating: 4.5, category: "DESSERTS"},
+        {id: 2, image: "https://via.placeholder.com/300", name: "Poulet rôti",Ingredients: "Tarte aux pommes",description: "Poulet juteux rôti au four avec des herbes et des épices.", rating: 4.0, category: "PLATS PRINCIPAUX" },
+        {id: 3, image: "https://via.placeholder.com/300", name: "Salade César",Ingredients: "Tarte aux pommes", description: "Salade croustillante aux feuilles de laitue, croûtons, parmesan et vinaigrette César.",rating: 3.8, category: "PLATS PRINCIPAUX" },
+        {id: 4, image: "https://via.placeholder.com/300", name: "Spaghetti bolognaise",Ingredients: "Tarte aux pommes", description: "Spaghetti garni d'une sauce bolognaise maison savoureuse à la viande et aux tomates.",rating: 4.2, category: "PLATS PRINCIPAUX" },
+        {id: 5, image: "https://via.placeholder.com/300", name: "Muffins aux myrtilles", Ingredients: "Tarte aux pommes", description: "Délicieux muffins moelleux remplis de myrtilles fraîches.",rating: 4.7, category: "DESSERTS", },
+        {id: 6, image: "https://via.placeholder.com/300", name: "Sushi california",Ingredients: "Tarte aux pommes",description: "Rouleaux de sushi remplis de crabe, d'avocat et de concombre, enveloppés dans du riz et de l'algue nori.", rating: 4.9, category: "PLATS PRINCIPAUX"},
+        {id: 7, image: "https://via.placeholder.com/300", name: "Soupe à l'oignon",Ingredients: "Tarte aux pommes", description: "Soupe chaude et réconfortante à base d'oignons caramélisés et de bouillon de poulet.", rating: 3.5, category: "PLATS PRINCIPAUX"},
+        {id: 8, image: "https://via.placeholder.com/300", name: "Pancakes",Ingredients: "Tarte aux pommes",description: "Délicieux pancakes moelleux servis avec du sirop d'érable et du beurre.", rating: 4.3, category: "DESSERTS", },
+        {id: 9, image: "https://via.placeholder.com/300", name: "Risotto aux champignons",Ingredients: "Tarte aux pommes", description: "Risotto crémeux aux champignons, cuit lentement avec du bouillon et du vin blanc.",rating: 4.6, category: "PLATS PRINCIPAUX",},
+        {id: 10, image: "https://via.placeholder.com/300", name: "Gâteau au chocolat",Ingredients: "Tarte aux pommes", description: "Gâteau moelleux au chocolat noir avec un glaçage onctueux.",rating: 4.8, category: "DESSERTS" }
     ];
-
+    
     // Fonction pour afficher les recettes
     function displayRecipes(recipes) {
         const recipeList = document.getElementById("recipe-list");
-        recipeList.innerHTML = ""; // Nettoyer la liste avant d'ajouter les nouvelles recettes
-
+        recipeList.innerHTML = "";
+    
         recipes.forEach(recipe => {
             const recipeItem = document.createElement("div");
             recipeItem.classList.add("col-md-4", "mb-4");
-
+    
             const card = `
                 <div class="card">
+                    <img src="${recipe.image}" class="card-img-top" alt="${recipe.name}">
                     <div class="card-body">
-                        <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
                         <h5 class="card-title">${recipe.name}</h5>
+                        <p class="card-text">Ingredients: ${recipe.Ingredients}</p>
                         <p class="card-text">Note: ${recipe.rating}</p>
-                        <button class="btn btn-primary" onclick="displayDescription(${recipe.id})">Voir la recette</button>
+                        <p class="card-text">Catégorie: ${recipe.category}</p>
+                        <div class="form-group mt-2">
+                            <label for="rating">Note:</label>
+                            <select class="form-select" id="rating${recipe.id}" onchange="rateRecipe(${recipe.id}, this.value)">
+                                <option value="">Sélectionner une note</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="buuu">
+                        <button class="btn btn-primary custom-view-button" onclick="displayDescription(${recipe.id})"  >Voir la recette</button>
+                        <button class="btn btn-danger custom-view-button1" onclick="deleteRecipe(${recipe.id})">Supprimer</button></div>
+                    </div>
+                    <div class="description-section" id="description-${recipe.id}" style="display: none;">
+                        <h6>Description:</h6>
+                        <p>${recipe.description}</p>
+                        <form class="comment-form">
+                            <div class="mb-3">
+                                <label for="commentName">Nom:</label>
+                                <input type="text" class="form-control" id="commentName-${recipe.id}" placeholder="Votre nom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="commentText">Commentaire:</label>
+                                <textarea class="form-control" id="commentText-${recipe.id}" placeholder="Votre commentaire"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="addComment(${recipe.id})">Ajouter Commentaire</button>
+                            <button class="btn btn-secondary" onclick="closeDescription(${recipe.id})">Fermer</button>
+                        </form>
+                        <div class="comments-list" id="comments-${recipe.id}"></div>
+                       
                     </div>
                 </div>
             `;
-
+    
             recipeItem.innerHTML = card;
             recipeList.appendChild(recipeItem);
         });
     }
+    
 
-    // Afficher la description de la recette
     function displayDescription(recipeId) {
-        const recipe = recipes.find(r => r.id === recipeId);
-        if (recipe) {
-            alert(recipe.description);
+    const recipe = recipes.find(r => r.id === recipeId);
+    if (recipe) {
+        const descriptionSection = document.getElementById(`description-${recipe.id}`);
+        const isVisible = descriptionSection.style.display === 'block';
+
+        // Fermer toutes les autres descriptions
+        const allDescriptionSections = document.querySelectorAll('.description-section');
+        allDescriptionSections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        if (!isVisible) {
+            descriptionSection.style.display = 'block';
         }
     }
+  
+}
 
-    // Pagination - Fonction pour gérer les pages
+
+function closeDescription(recipeId) {
+    const descriptionSection = document.getElementById(`description-${recipeId}`);
+    if (descriptionSection) {
+        descriptionSection.style.display = 'none';
+    }
+}
+
+
+    // filtrer  par catégorie
+    function filterRecipesByCategory(category) {
+        const filteredRecipes = recipes.filter(recipe => recipe.category === category);
+        displayRecipes(filteredRecipes);
+    }
+
+    // cat
+    const categoryLinks = document.querySelectorAll(".category");
+    categoryLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            const category = e.target.dataset.category;
+            filterRecipesByCategory(category);
+        });
+    });
+
+    // Pagi
     function paginate(array, page_size, page_number) {
         return array.slice((page_number - 1) * page_size, page_number * page_size);
     }
 
-    // Pagination - Événement lorsqu'on clique sur une page
+    // Pagi
     document.addEventListener("DOMContentLoaded", function() {
-        const PAGE_SIZE = 6; // Nombre de recettes par page
+        const PAGE_SIZE = 6; 
         let currentPage = 1;
 
         displayRecipes(paginate(recipes, PAGE_SIZE, currentPage));
 
-        // Événement lorsqu'on clique sur une page
+        
         const paginationLinks = document.querySelectorAll(".page-link");
         paginationLinks.forEach(link => {
             link.addEventListener("click", function(e) {
@@ -108,7 +354,6 @@
             });
         });
 
-        // Ajoutez un gestionnaire d'événements pour le bouton "Précédent"
         document.getElementById("previous-button").addEventListener("click", function(e) {
             e.preventDefault();
             if (currentPage > 1) {
@@ -125,7 +370,83 @@
         });
     });
 
-</script>
-</body>
-</html>
+    function addRecipe() {
+        const recipeTitle = document.getElementById('recipeTitle').value;
+        const recipeCategory = document.getElementById('recipeCategory').value;
+        const recipeIngredients = document.getElementById('recipeIngredients').value.split(',');
+        const recipeSteps = document.getElementById('recipeSteps').value.split('\n');
+        const recipeImage = document.getElementById('recipeImage').value;
+    
+        const newRecipe = {
+            id: recipes.length + 1,
+            image: recipeImage,
+            name: recipeTitle,
+            rating: "",
+            category: recipeCategory,
+            description:recipeSteps ,
+            ingredients: recipeIngredients
+            
+        };
+    
+        recipes.push(newRecipe);
+        displayRecipes(recipes);
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+        // Clear form fields
+        document.getElementById('addRecipeForm').reset();
+    
+        // Close the modal
+        $('#addRecipeModal').modal('hide');
+    }
 
+    // Function to delete a recipe
+    function deleteRecipe(recipeId) {
+        recipes = recipes.filter(recipe => recipe.id !== recipeId);
+        displayRecipes(recipes);
+       // localStorage.setItem('recipes', JSON.stringify(recipes));
+    }
+
+    // Function to rate a recipe
+    function rateRecipe(recipeId, rating) {
+        const recipe = recipes.find(r => r.id === recipeId);
+        if (recipe) {
+            recipe.rating = rating;
+            displayRecipes(recipes);
+            localStorage.setItem('recipes', JSON.stringify(recipes));
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+    // Charger les recettes depuis le LocalStorage
+    if (localStorage.getItem('recipes')) {
+        recipes = JSON.parse(localStorage.getItem('recipes'));
+        displayRecipes(recipes);
+    }
+
+    
+});
+function addComment(recipeId) {
+    const commentName = document.getElementById(`commentName-${recipeId}`).value;
+    const commentText = document.getElementById(`commentText-${recipeId}`).value;
+
+    // Créer un objet commentaire
+    const newComment = {
+        recipeId: recipeId,
+        name: commentName,
+        text: commentText
+    };
+
+    // Récupérer les commentaires existants depuis le localStorage
+    let allComments = JSON.parse(localStorage.getItem('allComments')) || [];
+
+    // Ajouter le nouveau commentaire à la liste
+    allComments.push(newComment);
+
+    // Mettre à jour les commentaires dans le localStorage
+    localStorage.setItem('allComments', JSON.stringify(allComments));
+
+    // Rediriger vers la page comments.html
+    window.location.href = 'comments.html';
+}
+
+</script>
+
+        

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .comment-container {
+            max-width: 800px;
+            margin: 0 auto;
+        color:  black;
+
+        }
+
+        .comment {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .comment strong {
+            color: #007bff;
+        }
+
+        .wrapper-users {
+            background: white;
+            color: red;
+            padding: 10px;
+            box-shadow: 4px 4px 10px #dbdcdb;
+            border-radius: 12px;
+        }
+
+        .users {
+            overflow: auto;
+            max-height: 220px;
+        }
+
+        #users-title {
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .users-content {
+            width: 90%;
+            background: white;
+            border-radius: 12px;
+            margin: 5px auto;
+            color: black;
+            display: flex;
+            align-items: center;
+            box-shadow: 4px 4px 10px #dbdcdb;
+        }
+
+        .full-name {
+            width: 100%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 10px;
+        }
+
+        .full-name > h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 8px;
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        #user-recipes {
+            font-weight: 400;
+            font-size: 12px;
+            color: #7f807f;
+        }
+
+        #status {
+            font-size: 10px;
+            color: green;
+            font-weight: 300;
+        }
+
+        #user-img {
+            border-right: .5px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper-users">
+        <h3 id="users-title">Users Comments</h3>
+        <div class="users" id="users">
+            <div class="comment-container">
+                <h3>All Comments</h3>
+                <div id="all-comments">
+                    <!-- Commentaires seront ajoutés ici dynamiquement -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+<script>
+ function deleteComment(commentIndex) {
+    let allComments = JSON.parse(localStorage.getItem('allComments')) || [];
+    allComments.splice(commentIndex, 1);
+    localStorage.setItem('allComments', JSON.stringify(allComments)); 
+    displayComments(); // Rafraîchir l'affichage des commentaires
+}
+
+
+// Attendre que le DOM soit entièrement chargé
+document.addEventListener("DOMContentLoaded", function() {
+    // Fonction pour afficher les commentaires
+    function displayComments() {
+        const allComments = JSON.parse(localStorage.getItem('allComments')) || [];
+        const commentsContainer = document.getElementById('all-comments');
+        commentsContainer.innerHTML = '';
+
+        if (allComments.length === 0) {
+            commentsContainer.innerHTML = '<p>Aucun commentaire disponible pour le moment.</p>';
+        } else {
+            allComments.forEach((comment, index) => {
+                const commentElement = `
+                    <div class="comment">
+                        <strong>${comment.name}</strong>
+                        <p>${comment.text}</p>
+                        <button class="btn btn-danger" onclick="deleteComment(${index})">Supprimer</button>
+                    </div>
+                `;
+                commentsContainer.innerHTML += commentElement;
+            });
+        }
+    }
+
+    // Appeler la fonction pour afficher les commentaires lors du chargement de la page
+    displayComments();
+});
+
+</script> 
+</body>
+</html>
