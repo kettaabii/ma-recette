@@ -1,0 +1,30 @@
+@import url('https://fonts.cdnfonts.com/css/daydream');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+body {background: rgb(255,255,255);
+    background: -moz-linear-gradient(0deg, rgba(255,255,255,0.8134312913907285) 0%, rgba(185,217,235,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(255,255,255,0.8134312913907285) 0%, rgba(185,217,235,1) 100%);
+    background: linear-gradient(0deg, rgba(255,255,255,0.8134312913907285) 0%, rgba(185,217,235,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#b9d9eb",GradientType=1);
+    background-repeat: no-repeat;}
+.Box-left{
+    width:25%;
+}
+.Box-left .plat-left{
+    margin-left: -400px;
+}
+.container{
+    display:flex;
+
+}
+.bienvenue{
+    font-family: daydream;
+    font-size: 3rem;
+    font-weight: bold;
+}
+.Titre{
+    font-family: Arimo;
+    font-size: 4rem;
+    text-decoration-color: #BD5521;
+    color:#BD5521;
+}
+.home{dislay:flex; flex-direction:column;}
