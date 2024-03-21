@@ -24,30 +24,44 @@ header{
     padding: 10px;
 
 } */
-.title{
-    background-image: url(IMAGE-REC.jpg);
-    backdrop-filter: blur(5px);
-    width: 100%;
-    text-align: center;
-    height: 30%; 
-    align-items: center;
-    min-height: 200px;
-    background-size: cover;
-    background-position: center;
-     background-position-x: center;
-    box-shadow: 20%;
-    padding: 2%;
+@import url('https://fonts.cdnfonts.com/css/daydream');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
 
-}
-.title>h2{
-    color:white;
-    font-size: 100%;
-    width: 100%;
-    
-}
-.title>h1{
-    margin: 0 0 15px;
-    letter-spacing: 3px;
-    color: #ffffff;
-    text-transform: uppercase;
-}
+        body {
+            background: rgb(255, 255, 255);
+            background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 0.8134312913907285) 0%, rgba(185, 217, 235, 1) 100%);
+            background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0.8134312913907285) 0%, rgba(185, 217, 235, 1) 100%);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.8134312913907285) 0%, rgba(185, 217, 235, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#b9d9eb", GradientType=1);
+            background-repeat: no-repeat;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            text-decoration: none;
+        }
+
+        .title {
+            background-image: url(cuoco_420.jpg);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            padding: 2%;
+        }
+
+        .title>p {
+            color:rgb(79, 55, 150) ;
+            font-size: 30px;
+        }
+
+        .title>h1 {
+            font-size: 40px;
+            color:brown;
+        }
