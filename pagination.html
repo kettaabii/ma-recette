@@ -5,6 +5,11 @@
     <title>Ma Recette</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
     <style>
         @import url('https://fonts.cdnfonts.com/css/daydream');
         @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
@@ -58,11 +63,7 @@
            
             color: #fff;
         }
-        .custom-page-link {
-            background-color: #83E3DD;
-            border-color: #83E3DD;
-            color: #fff; 
-        }
+     
         .custom-view-button {
             background-color: #BD5521;
             border-color: yellow;
@@ -91,7 +92,161 @@
             gap: 50px;
             margin-top: 30px;
         }
-        
+       
+          
+            .w3-center .w3-bar {
+                display: inline-block;
+                width: auto;
+                flex-direction: column;
+            }
+            .card {
+             
+                background-color: #fff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                border-color: yellow;
+                transition: all 0.2s ease-in-out;
+              }
+              .card:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+                transform: translateY(-2px);
+              }
+              .note-section {
+                position: fixed;
+                top: 50px; /* Position verticale */
+                left: 20px; /* Position horizontale */
+                width: 250px;
+                background-color: #f8f9fa;
+                border: 1px solid #ccc;
+                padding: 10px;
+                overflow-y: auto; /* Permet le défilement si nécessaire */
+                max-height: calc(100vh - 100px); /* Limite la hauteur */
+            }
+            
+            .note-section h2 {
+                margin-top: 0;
+                font-size: 20px;
+            }
+            
+            .note-list {
+                list-style-type: none;
+                padding: 0;
+            }
+            
+            .note-list li {
+                margin-bottom: 10px;
+            }
+            
+            .note-list li h3 {
+                margin-bottom: 5px;
+                font-size: 16px;
+            }
+            
+            .note-list li p {
+                margin: 0;
+                font-size: 14px;
+            }
+            .bg-danger {
+             background-color:#BD5521!important;
+            }
+            .progress{
+                display: flex;
+                flex-direction: row;
+                gap:20px;
+            }
+            .recipe-card {
+            display: flex;
+            flex-direction: row;
+            gap:20px;
+           width:150%;
+    border: 1px solid #ccc;
+}
+.recipe-steps  {
+   display: flex;
+   flex-direction: column;
+}
+
+.interactive-section {
+ display: flex;
+ flex-direction: column;
+ gap: 50Px;
+}
+
+.textare{
+    height: 200px;
+    border-radius: 10px;
+   
+    border: 4px solid#FFBD59;
+}
+.textareA{
+    border-radius: 10px;
+   
+   border: 4px solid#FFBD59;
+}
+.slidecontainer{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+.SUBMIT{
+    background-color: #FFBD59;
+}
+.slidecontainer .custom-range::-webkit-slider-thumb {
+  background: #FFBD59;
+}
+
+.slidecontainer .custom-range::-moz-range-thumb {
+  background: #FFBD59;
+}
+
+.slidecontainer .custom-range::-ms-thumb {
+  background: #FFBD59;
+}
+.w3-teal, .w3-hover-teal:hover {
+    color: #fff !important;
+}
+.w3-xlarge {
+    font-size: 24px !important;
+}
+.w3-display-topright {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.bg-danger {
+  background-color: #FFBD59 !important;
+}
+.hidden {
+    display: none;
+}
+       :root {
+        --primary-color: #BD5521;
+        --secondary-color: #FFBD59;
+    }
+
+   
+    .btn-custom {
+        background-color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        color: white;
+        border-radius: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    /* Button hover state */
+    .btn-custom:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+    }
+
+    /* Button active state */
+    .btn-custom:active {
+        transform: translateY(1px);
+    }
+
+  
     </style>
 </head>
 <body>
@@ -131,10 +286,28 @@
                 </li>
             </ul>
          
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+            <form class="d-flex">
+                <input id="search-input" class="form-control me-2" type="search" placeholder="Rechercher une recette..." aria-label="Rechercher">
+               
+                <button id="search-button" class="btn btn-outline-success" type="button">Rechercher</button>
+                <ul id="myUL" style="display: none;">
+                    <li><a href="#">Tarte aux pommes</a></li>
+                    <li><a href="#">Poulet rôti</a></li>
+                    <li><a href="#">Salade César</a></li>
+                    <li><a href="#">Spaghetti bolognaise</a></li>
+                    <li><a href="#">Muffins aux myrtilles</a></li>
+                    <li><a href="#">Sushi california</a></li>
+                    <li><a href="#">Soupe à l'oignon</a></li>
+                    <li><a href="#">Pancakes</a></li>
+                    <li><a href="#">Risotto aux champignons</a></li>
+                    <li><a href="#">Gâteau au chocolat</a></li>
+                </ul>
             </form>
+            
+           
+            
+            
+            
         </div>
     </div>
 </nav>
@@ -148,65 +321,71 @@
     <h1>Recettes Populaires</h1>
     <div class="row" id="recipe-list">
     </div>
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center" >
-            <li class="page-item" id="previous-button">
-                <a class="page-link custom-previous-button " href="#">Précédent</a>
-            </li>
-            <li class="page-item"><a class="page-link custom-page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link custom-page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link custom-page-link" href="#">3</a></li>
-            <li class="page-item" id="next-button">
-                <a class="page-link custom-next-button" href="#">Suivant</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="w3-center w3-padding-32">
+        <div class="w3-bar">
+            <a href="#" id="previous-button" class="w3-bar-item w3-button w3-hover-black">&laquo;</a>
+            <a href="#" class="page-link custom-page-link w3-bar-item w3-button" onclick="changePage(1)">1</a>
+            <a href="#" class="page-link custom-page-link w3-bar-item w3-button" onclick="changePage(2)">2</a>
+            <a href="#" class="page-link custom-page-link w3-bar-item w3-button" onclick="changePage(3)">3</a>
+            <a href="#" id="next-button" class="w3-bar-item w3-button w3-hover-black">&raquo;</a>
+        </div>
+    </div>
+    
 </div>
 <!-- Modal -->
-<div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+
+<div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" style=" border-radius: 10px;border: 4px solid#FFBD59;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addRecipeModalLabel">Add Recipe</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addRecipeForm">
-                    <div class="mb-3">
-                        <label for="recipeTitle"></label>
-                        <input type="text" class="form-control" id="recipeTitle" placeholder="Titre de la recette" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipeCategory" class="form-label">Catégorie:</label>
-                        <select class="form-select" id="recipeCategory" required>
-                            <option selected disabled>Sélectionner une catégorie</option>
-                            <option value="PLATS PRINCIPAUX">Plats Principaux</option>
-                            <option value="BURGERS">Burgers</option>
-                            <option value="PATES ET RIZ">Pâtes et Riz</option>
-                            <option value="BISCUITS">Biscuits</option>
-                            <option value="DESSERTS">Desserts</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipeIngredients" class="form-label">Ingrédients:</label>
-                        <textarea class="form-control" id="recipeIngredients" placeholder="Ingrédients (séparés par des virgules)" rows="3" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipeSteps" class="form-label">Étapes:</label>
-                        <textarea class="form-control" id="recipeSteps" placeholder="Étapes de la recette (séparées par des retours à la ligne)" rows="5" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipeImage" class="form-label">URL de l'image:</label>
-                        <input type="url" class="form-control" id="recipeImage" placeholder="URL de l'image" required>
+                <form id="addRecipeForm" class="form bg-body-secondary p-5">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="recipeTitle" class="form-label">Recipe Title</label>
+                            <input type="text" class="form-control" id="recipeTitle" placeholder="Recipe Title" required>   
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="recipeCategory" class="form-label">Category:</label>
+                            <select class="form-select" id="recipeCategory" required>
+                                <option selected disabled>Select a category</option>
+                                <option value="PLATS PRINCIPAUX">Main Dishes</option>
+                                <option value="BURGERS">Burgers</option>
+                                <option value="PATES ET RIZ">Pasta and Rice</option>
+                                <option value="BISCUITS">Biscuits</option>
+                                <option value="DESSERTS">Desserts</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="recipeIngredients" class="form-label">Ingredients:</label>
+                            <textarea class="form-control" id="recipeIngredients" placeholder="Ingredients (separated by commas)" rows="3" required></textarea>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="recipeSteps" class="form-label">Steps:</label>
+                            <textarea class="form-control" id="recipeSteps" placeholder="Recipe steps (separated by line breaks)" rows="5" required></textarea>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="recipeImage" class="form-label">Image URL:</label>
+                            <input type="url" class="form-control" id="recipeImage" placeholder="Image URL" required>
+                        </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary" onclick="addRecipe()">Ajouter Recette</button>
+                <button type="button" class="btn btn-custom" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-custom" onclick="addRecipe()">Add Recipe</button>
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="note-section">
+    <h2>Ma Liste de Recettes</h2>
+    <ul id="myRecipeList" class="note-list"></ul>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -214,19 +393,23 @@
 <script>
     // Exemple de données de recettes
     let recipes = [
-        {id: 1, image: "https://via.placeholder.com/200", name: "Tarte aux pommes",Ingredients: "Tarte aux pommes",  description: "Délicieuse tarte aux pommes faite avec des pommes fraîches et une croûte croustillante." ,rating: 4.5, category: "DESSERTS"},
-        {id: 2, image: "https://via.placeholder.com/300", name: "Poulet rôti",Ingredients: "Tarte aux pommes",description: "Poulet juteux rôti au four avec des herbes et des épices.", rating: 4.0, category: "PLATS PRINCIPAUX" },
-        {id: 3, image: "https://via.placeholder.com/300", name: "Salade César",Ingredients: "Tarte aux pommes", description: "Salade croustillante aux feuilles de laitue, croûtons, parmesan et vinaigrette César.",rating: 3.8, category: "PLATS PRINCIPAUX" },
-        {id: 4, image: "https://via.placeholder.com/300", name: "Spaghetti bolognaise",Ingredients: "Tarte aux pommes", description: "Spaghetti garni d'une sauce bolognaise maison savoureuse à la viande et aux tomates.",rating: 4.2, category: "PLATS PRINCIPAUX" },
-        {id: 5, image: "https://via.placeholder.com/300", name: "Muffins aux myrtilles", Ingredients: "Tarte aux pommes", description: "Délicieux muffins moelleux remplis de myrtilles fraîches.",rating: 4.7, category: "DESSERTS", },
-        {id: 6, image: "https://via.placeholder.com/300", name: "Sushi california",Ingredients: "Tarte aux pommes",description: "Rouleaux de sushi remplis de crabe, d'avocat et de concombre, enveloppés dans du riz et de l'algue nori.", rating: 4.9, category: "PLATS PRINCIPAUX"},
-        {id: 7, image: "https://via.placeholder.com/300", name: "Soupe à l'oignon",Ingredients: "Tarte aux pommes", description: "Soupe chaude et réconfortante à base d'oignons caramélisés et de bouillon de poulet.", rating: 3.5, category: "PLATS PRINCIPAUX"},
-        {id: 8, image: "https://via.placeholder.com/300", name: "Pancakes",Ingredients: "Tarte aux pommes",description: "Délicieux pancakes moelleux servis avec du sirop d'érable et du beurre.", rating: 4.3, category: "DESSERTS", },
-        {id: 9, image: "https://via.placeholder.com/300", name: "Risotto aux champignons",Ingredients: "Tarte aux pommes", description: "Risotto crémeux aux champignons, cuit lentement avec du bouillon et du vin blanc.",rating: 4.6, category: "PLATS PRINCIPAUX",},
-        {id: 10, image: "https://via.placeholder.com/300", name: "Gâteau au chocolat",Ingredients: "Tarte aux pommes", description: "Gâteau moelleux au chocolat noir avec un glaçage onctueux.",rating: 4.8, category: "DESSERTS" }
-    ];
-    
+    {id: 1, image: "https://via.placeholder.com/200", name: "Tarte aux pommes", Ingredients: "Tarte aux pommes", description: "Délicieuse tarte aux pommes faite avec des pommes fraîches et une croûte croustillante.", rating: 4.5, category: "DESSERTS"},
+    {id: 2, image: "https://via.placeholder.com/300", name: "Poulet rôti", Ingredients: "Tarte aux pommes", description: "Poulet juteux rôti au four avec des herbes et des épices.", rating: 4.0, category: "PLATS PRINCIPAUX" },
+    {id: 3, image: "https://via.placeholder.com/300", name: "Salade César", Ingredients: "Tarte aux pommes", description: "Salade croustillante aux feuilles de laitue, croûtons, parmesan et vinaigrette César.", rating: 3.8, category: "PLATS PRINCIPAUX" },
+    {id: 4, image: "https://via.placeholder.com/300", name: "Spaghetti bolognaise", Ingredients: "Tarte aux pommes", description: "Spaghetti garni d'une sauce bolognaise maison savoureuse à la viande et aux tomates.", rating: 4.2, category: "PLATS PRINCIPAUX" },
+    {id: 5, image: "https://via.placeholder.com/300", name: "Muffins aux myrtilles", Ingredients: "Tarte aux pommes", description: "Délicieux muffins moelleux remplis de myrtilles fraîches.", rating: 4.7, category: "DESSERTS", },
+    {id: 6, image: "https://via.placeholder.com/300", name: "Sushi california", Ingredients: "Tarte aux pommes", description: "Rouleaux de sushi remplis de crabe, d'avocat et de concombre, enveloppés dans du riz et de l'algue nori.", rating: 4.9, category: "PLATS PRINCIPAUX"},
+    {id: 7, image: "https://via.placeholder.com/300", name: "Soupe à l'oignon", Ingredients: "Tarte aux pommes", description: "Soupe chaude et réconfortante à base d'oignons caramélisés et de bouillon de poulet.", rating: 3.5, category: "PLATS PRINCIPAUX"},
+    {id: 8, image: "https://via.placeholder.com/300", name: "Pancakes", Ingredients: "Tarte aux pommes", description: "Délicieux pancakes moelleux servis avec du sirop d'érable et du beurre.", rating: 4.3, category: "DESSERTS", },
+    {id: 9, image: "https://via.placeholder.com/300", name: "Risotto aux champignons", Ingredients: "Tarte aux pommes", description: "Risotto crémeux aux champignons, cuit lentement avec du bouillon et du vin blanc.", rating: 4.6, category: "PLATS PRINCIPAUX",},
+    {id: 10, image: "https://via.placeholder.com/300", name: "Gâteau au chocolat", Ingredients: "Tarte aux pommes", description: "Gâteau moelleux au chocolat noir avec un glaçage onctueux.", rating: 4.8, category: "DESSERTS" }
+];
+function paginate(array, page_size, page_number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+
     // Fonction pour afficher les recettes
+    
     function displayRecipes(recipes) {
         const recipeList = document.getElementById("recipe-list");
         recipeList.innerHTML = "";
@@ -241,107 +424,83 @@
                     <div class="card-body">
                         <h5 class="card-title">${recipe.name}</h5>
                         <p class="card-text">Ingredients: ${recipe.Ingredients}</p>
-                        <p class="card-text">Note: ${recipe.rating}</p>
-                        <p class="card-text">Catégorie: ${recipe.category}</p>
-                        <div class="form-group mt-2">
-                            <label for="rating">Note:</label>
-                            <select class="form-select" id="rating${recipe.id}" onchange="rateRecipe(${recipe.id}, this.value)">
-                                <option value="">Sélectionner une note</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div class="buuu">
-                        <button class="btn btn-primary custom-view-button" onclick="displayDescription(${recipe.id})"  >Voir la recette</button>
-                        <button class="btn btn-danger custom-view-button1" onclick="deleteRecipe(${recipe.id})">Supprimer</button></div>
+                    <div class="position">  
+                <div class="progress">
+                     <div class="progress-bar bg-danger"  min="0" max="10" style="width: 100px; height: 20px;"  oninput="changeRangeStyle(this)"  step="0.1" id="rating${recipe.id}" this.value)"></div>
+                     
                     </div>
-                    <div class="description-section" id="description-${recipe.id}" style="display: none;">
+                    <div> <p id="rating-value-${recipe.id}" class="card-text"> ${recipe.rating}/10</p></div>
+                </div>
+                        <p class="card-text">Catégorie: ${recipe.category}</p>
+                      
+                        <div class="buuu">
+                            <button class="btn btn-primary custom-view-button" onclick="displayDescription(${recipe.id})">Voir la recette</button>
+                            <button class="btn btn-success custom-view-button1" onclick="addToMyList(${recipe.id})">Ajouter à ma liste</button>
+                            </div>
+                        </div>
+                    </div>
+<div class="description-section" id="description-${recipe.id}" style="display: none;">
                         <h6>Description:</h6>
                         <p>${recipe.description}</p>
-                        <form class="comment-form">
-                            <div class="mb-3">
-                                <label for="commentName">Nom:</label>
-                                <input type="text" class="form-control" id="commentName-${recipe.id}" placeholder="Votre nom">
-                            </div>
-                            <div class="mb-3">
-                                <label for="commentText">Commentaire:</label>
-                                <textarea class="form-control" id="commentText-${recipe.id}" placeholder="Votre commentaire"></textarea>
-                            </div>
-                            <button type="button" class="btn btn-primary" onclick="addComment(${recipe.id})">Ajouter Commentaire</button>
-                            <button class="btn btn-secondary" onclick="closeDescription(${recipe.id})">Fermer</button>
-                        </form>
+<form>
+    <div class="recipe-card">
+        <div>
+                          <img src="${recipe.image}" class="card-img-top" alt="${recipe.name}">
+                          <h1>Harira Marocaine</h1>
+                          <div class="recipe-steps">
+                          <p>description les étapes</p>
+                          <p>Étape 1:</p><br>
+                          <pre>Séparer le blanc des jaunes.</pre>
+                          <p>Étape 2:</p><br>
+                          <pre>Séparer le blanc des jaunes.</pre>
+                          <p>Étape 3:</p><br>
+                         <pre>Séparer le blanc des jaunes.</pre>
+        </div>
+    </div>
+    <div class="interactive-section">
+            <p>rating : </p>
+        <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%; color:#FFBD59;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+            <p>rating review </p>
+            <div class="progress">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 25%; color:#FFBD59;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="time">Time : 30 min</div>
+            <form class="comment-form">
+                <div class="mb-3">
+                    <label for="commentName">Nom:</label>
+                    <input type="text" class="form-control textareA" id="commentName-${recipe.id}" placeholder="Votre nom">
+                </div>
+                <div class="mb-3">
+                    <label for="commentText">Commentaire:</label>
+                    <textarea class="form-control textare"  id="commentText-${recipe.id}"placeholder="leave a comment"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary SUBMIT" onclick="addComment(${recipe.id})">Ajouter Commentaire</button>
+                <button class="btn btn-secondary" onclick="closeDescription(${recipe.id})">Fermer </button>
+            </form>
                         <div class="comments-list" id="comments-${recipe.id}"></div>
-                       
                     </div>
                 </div>
+            </div>
             `;
-    
             recipeItem.innerHTML = card;
             recipeList.appendChild(recipeItem);
+    
+            const ratingInput = document.getElementById(`rating${recipe.id}`);
+            const ratingValue = document.getElementById(`rating-value-${recipe.id}`);
+            ratingInput.addEventListener('input', function() {
+                const rating = parseFloat(ratingInput.value).toFixed(1);
+                ratingValue.textContent = `Rating: ${rating}`;
+                rateRecipe(recipe.id, rating); // Appeler la fonction rateRecipe pour mettre à jour le rating
+            });
         });
     }
     
-
-    function displayDescription(recipeId) {
-    const recipe = recipes.find(r => r.id === recipeId);
-    if (recipe) {
-        const descriptionSection = document.getElementById(`description-${recipe.id}`);
-        const isVisible = descriptionSection.style.display === 'block';
-
-        // Fermer toutes les autres descriptions
-        const allDescriptionSections = document.querySelectorAll('.description-section');
-        allDescriptionSections.forEach(section => {
-            section.style.display = 'none';
-        });
-
-        if (!isVisible) {
-            descriptionSection.style.display = 'block';
-        }
-    }
-  
-}
-
-
-function closeDescription(recipeId) {
-    const descriptionSection = document.getElementById(`description-${recipeId}`);
-    if (descriptionSection) {
-        descriptionSection.style.display = 'none';
-    }
-}
-
-
-    // filtrer  par catégorie
-    function filterRecipesByCategory(category) {
-        const filteredRecipes = recipes.filter(recipe => recipe.category === category);
-        displayRecipes(filteredRecipes);
-    }
-
-    // cat
-    const categoryLinks = document.querySelectorAll(".category");
-    categoryLinks.forEach(link => {
-        link.addEventListener("click", function(e) {
-            e.preventDefault();
-            const category = e.target.dataset.category;
-            filterRecipesByCategory(category);
-        });
-    });
-
-    // Pagi
-    function paginate(array, page_size, page_number) {
-        return array.slice((page_number - 1) * page_size, page_number * page_size);
-    }
-
-    // Pagi
     document.addEventListener("DOMContentLoaded", function() {
-        const PAGE_SIZE = 6; 
+        const PAGE_SIZE = 6;
         let currentPage = 1;
-
-        displayRecipes(paginate(recipes, PAGE_SIZE, currentPage));
-
-        
+    
         const paginationLinks = document.querySelectorAll(".page-link");
         paginationLinks.forEach(link => {
             link.addEventListener("click", function(e) {
@@ -353,7 +512,7 @@ function closeDescription(recipeId) {
                 }
             });
         });
-
+    
         document.getElementById("previous-button").addEventListener("click", function(e) {
             e.preventDefault();
             if (currentPage > 1) {
@@ -361,92 +520,223 @@ function closeDescription(recipeId) {
                 displayRecipes(paginate(recipes, PAGE_SIZE, currentPage));
             }
         });
+    
         document.getElementById("next-button").addEventListener("click", function(e) {
             e.preventDefault();
-            if (currentPage > 0) {
+            const totalPages = Math.ceil(recipes.length / PAGE_SIZE);
+            if (currentPage < totalPages) {
                 currentPage++;
                 displayRecipes(paginate(recipes, PAGE_SIZE, currentPage));
             }
         });
+    
+        displayRecipes(paginate(recipes, PAGE_SIZE, currentPage));
     });
-
-    function addRecipe() {
-        const recipeTitle = document.getElementById('recipeTitle').value;
-        const recipeCategory = document.getElementById('recipeCategory').value;
-        const recipeIngredients = document.getElementById('recipeIngredients').value.split(',');
-        const recipeSteps = document.getElementById('recipeSteps').value.split('\n');
-        const recipeImage = document.getElementById('recipeImage').value;
-    
-        const newRecipe = {
-            id: recipes.length + 1,
-            image: recipeImage,
-            name: recipeTitle,
-            rating: "",
-            category: recipeCategory,
-            description:recipeSteps ,
-            ingredients: recipeIngredients
-            
-        };
-    
-        recipes.push(newRecipe);
-        displayRecipes(recipes);
-        localStorage.setItem('recipes', JSON.stringify(recipes));
-        // Clear form fields
-        document.getElementById('addRecipeForm').reset();
-    
-        // Close the modal
-        $('#addRecipeModal').modal('hide');
-    }
-
-    // Function to delete a recipe
-    function deleteRecipe(recipeId) {
-        recipes = recipes.filter(recipe => recipe.id !== recipeId);
-        displayRecipes(recipes);
-       // localStorage.setItem('recipes', JSON.stringify(recipes));
-    }
-
-    // Function to rate a recipe
-    function rateRecipe(recipeId, rating) {
+    function displayDescription(recipeId) {
         const recipe = recipes.find(r => r.id === recipeId);
         if (recipe) {
-            recipe.rating = rating;
-            displayRecipes(recipes);
-            localStorage.setItem('recipes', JSON.stringify(recipes));
+            const descriptionSection = document.getElementById(`description-${recipe.id}`);
+            const isVisible = descriptionSection.style.display === 'block';
+    
+            // Fermer toutes les autres descriptions
+            const allDescriptionSections = document.querySelectorAll('.description-section');
+            allDescriptionSections.forEach(section => {
+                section.style.display = 'none';
+            });
+    
+            if (!isVisible) {
+                descriptionSection.style.display = 'block';
+            }
+        }
+      
+    }
+    
+    
+    function closeDescription(recipeId) {
+        const descriptionSection = document.getElementById(`description-${recipeId}`);
+        if (descriptionSection) {
+            descriptionSection.style.display = 'none';
         }
     }
-    document.addEventListener("DOMContentLoaded", function() {
-    // Charger les recettes depuis le LocalStorage
-    if (localStorage.getItem('recipes')) {
-        recipes = JSON.parse(localStorage.getItem('recipes'));
-        displayRecipes(recipes);
-    }
-
     
-});
-function addComment(recipeId) {
-    const commentName = document.getElementById(`commentName-${recipeId}`).value;
-    const commentText = document.getElementById(`commentText-${recipeId}`).value;
-
-    // Créer un objet commentaire
-    const newComment = {
-        recipeId: recipeId,
-        name: commentName,
-        text: commentText
+    
+        // filtrer  par catégorie
+       
+    
+        function filterRecipesByCategory(category) {
+            const filteredRecipes = recipes.filter(recipe => recipe.category === category);
+            displayRecipes(filteredRecipes);
+        }
+    
+        // cat
+        const categoryLinks = document.querySelectorAll(".category");
+        categoryLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                const category = e.target.dataset.category;
+                filterRecipesByCategory(category);
+            });
+        });
+    
+        function addRecipe() {
+            const recipeTitle = document.getElementById('recipeTitle').value;
+            const recipeCategory = document.getElementById('recipeCategory').value;
+            const recipeIngredients = document.getElementById('recipeIngredients').value.split(',');
+            const recipeSteps = document.getElementById('recipeSteps').value.split('\n');
+            const recipeImage = document.getElementById('recipeImage').value;
+        
+            const newRecipe = {
+                id: recipes.length + 1,
+                image: recipeImage,
+                name: recipeTitle,
+                rating: "",
+                category: recipeCategory,
+                description:recipeSteps ,
+                ingredients: recipeIngredients
+                
+            };
+        
+            recipes.push(newRecipe);
+            displayRecipes(recipes);
+            localStorage.setItem('recipes', JSON.stringify(recipes));
+            // Clear form fields
+            document.getElementById('addRecipeForm').reset();
+        
+            // Close the modal
+            $('#addRecipeModal').modal('hide');
+        }
+    
+        // Function to rate a recipe
+    
+   
+        //document.addEventListener("DOMContentLoaded", function() {
+            //Charger les recettes depuis le LocalStorage
+           // if (localStorage.getItem('recipes')) {
+                recipes = JSON.parse(localStorage.getItem('recipes'));
+              // displayRecipes(recipes);
+          // }  
+      // });
+    function addComment(recipeId) {
+        const commentName = document.getElementById(`commentName-${recipeId}`).value;
+        const commentText = document.getElementById(`commentText-${recipeId}`).value;
+    
+        // Créer un objet commentaire
+        const newComment = {
+            recipeId: recipeId,
+            name: commentName,
+            text: commentText
+        };
+    
+        // Récupérer les commentaires existants depuis le localStorage
+        let allComments = JSON.parse(localStorage.getItem('allComments')) || [];
+    
+        // Ajouter le nouveau commentaire à la liste
+        allComments.push(newComment);
+    
+        // Mettre à jour les commentaires dans le localStorage
+        localStorage.setItem('allComments', JSON.stringify(allComments));
+    
+        // Rediriger vers la page comments.html
+        window.location.href = 'comments.html';
+    }
+    
+    function filterRecipesByName() {
+        const input = document.getElementById("search-input").value.toUpperCase();
+        const filteredRecipes = recipes.filter(recipe => recipe.name.toUpperCase().includes(input));
+        displayRecipes(filteredRecipes);
+    }
+    document.getElementById("search-button").addEventListener("click", filterRecipesByName);
+    document.getElementById("search-input").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            filterRecipesByName();
+        }
+    });
+    function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("search-input");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        ul.style.display = "block"; 
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            
+           
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    
+    const recipeLinks = document.querySelectorAll("#myUL li a");
+    recipeLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            const recipeName = this.textContent;
+            document.getElementById("search-input").value = recipeName;
+            myFunction(); 
+        });
+    });
+    
+    // Ajouter un événement de clic sur le bouton de recherche
+    const searchButton = document.getElementById("search-button");
+    searchButton.addEventListener("click", function() {
+        myFunction(); // Appeler la fonction de recherche lorsque le bouton est cliqué
+    });
+    
+    function addToMyList(recipeId) {
+        let myRecipeList = JSON.parse(localStorage.getItem('myRecipeList')) || [];
+        const existingRecipe = myRecipeList.find(recipe => recipe.id === recipeId);
+    
+        if (!existingRecipe) {
+            const recipeToAdd = recipes.find(recipe => recipe.id === recipeId);
+            if (recipeToAdd) {
+                myRecipeList.push(recipeToAdd);
+                localStorage.setItem('myRecipeList', JSON.stringify(myRecipeList));
+                alert('Recette ajoutée à votre liste!\n\n' + recipeToAdd.description);
+                displayMyRecipeList(); 
+            } else {
+                alert('Recette non trouvée.');
+            }
+        } else {
+            alert('Cette recette est déjà dans votre liste!');
+            displayMyRecipeList();
+        }
+    }
+    
+   
+    function displayMyRecipeList() {
+        const myRecipeListContainer = document.getElementById('myRecipeList');
+        myRecipeListContainer.innerHTML = ' '; 
+    
+        let myRecipeList = JSON.parse(localStorage.getItem('myRecipeList')) || [];
+        if (myRecipeList.length === 0) {
+            myRecipeListContainer.innerHTML = '<p>Aucune recette dans votre liste.</p>';
+            return;
+        }
+    
+        myRecipeList.forEach(recipe => {
+            const recipeItem = document.createElement('li');
+            recipeItem.innerHTML = `
+                <h3>${recipe.name}</h3>
+                <p>Ingrédients: ${recipe.Ingredients}</p>
+                <p>Description: ${recipe.description}</p>
+            `;
+            myRecipeListContainer.appendChild(recipeItem);
+        });
+        const closeButton = document.createElement('button');
+    closeButton.textContent = 'Fermer';
+    closeButton.className = 'btn btn-secondary';
+    closeButton.onclick = function() {
+        myRecipeListContainer.innerHTML = ''; // Clear the list
     };
-
-    // Récupérer les commentaires existants depuis le localStorage
-    let allComments = JSON.parse(localStorage.getItem('allComments')) || [];
-
-    // Ajouter le nouveau commentaire à la liste
-    allComments.push(newComment);
-
-    // Mettre à jour les commentaires dans le localStorage
-    localStorage.setItem('allComments', JSON.stringify(allComments));
-
-    // Rediriger vers la page comments.html
-    window.location.href = 'comments.html';
-}
-
+    myRecipeListContainer.appendChild(closeButton);
+    }
+  
 </script>
-
+</body>
+</html>
         
