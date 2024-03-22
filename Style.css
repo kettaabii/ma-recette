@@ -6,16 +6,25 @@ body {background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,0.8134312913907285) 0%, rgba(185,217,235,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#b9d9eb",GradientType=1);
     background-repeat: no-repeat;}
-.Box-left{
-    width:25%;
+
+.plat-left{
+
+    position: relative;
+    left:-80px;
 }
-.Box-left .plat-left{
-    margin-left: -400px;
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
-.container{
-    display:flex;
+.bienvenue1{
+    margin-top: 2rem;
+    font-family: daydream;
+    font-size: 2rem;
+    font-weight: bold;
 
 }
+
 .bienvenue{
     font-family: daydream;
     font-size: 3rem;
@@ -27,4 +36,6 @@ body {background: rgb(255,255,255);
     text-decoration-color: #BD5521;
     color:#BD5521;
 }
-.home{dislay:flex; flex-direction:column;}
+.home{
+    dislay:flex;
+    flex-direction:column;}
