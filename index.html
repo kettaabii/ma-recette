@@ -127,17 +127,75 @@
     </div>
 
 </section>
-
-
-
-
-
 </div> -->
 
-
-
+<!-- <p id="title1">here</p> 
+<p id="title2" >here</p>
+<p id="title3">here</p>
+<p id="title4">here</p>
+<ul>
+   <li id="moins_duree">moins duree</li>
+<li id="plus_duree">plus</li>  
+ <li id="moins_value">moins rating</li>
+    <li id="plus_value">plus rat</li>
+</ul> -->
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/all.min.js"></script>
+    <script>const namesrecette = [
+        { name: "hrera", duree: 60 ,value: 1},
+        { name: "tajine", duree: 23 ,value: 6},
+        { name: "msamma", duree: 35 ,value: 7}
+      ];
+      
+      const compare_ascending = (a, b) => {
+        const dureeA = a.duree;
+        const dureeB = b.duree;
+        return dureeA - dureeB;
+      };
+      const compare_descending = (a, b) => {
+        const dureeA = a.duree;
+        const dureeB = b.duree;
+          return dureeB - dureeA;
+      };
+      const value_ascending = (a, b) => {
+        const valueA = a.value;
+        const valueB = b.value;
+        return valueA - valueB;
+      };
+      const value_descending = (a, b) => {
+        const valueA = a.value;
+        const  valueB= b.value;
+          return valueB - valueA;
+      };
+      
+      
+      const recette_ascending = namesrecette.slice().sort(compare_ascending);
+      const recette_descending = namesrecette.slice().sort(compare_descending);
+      const value_asc = namesrecette.slice().sort(value_ascending);
+      const value_des = namesrecette.slice().sort(value_descending);
+      
+      let moin_duree = document.getElementById('moins_duree');
+      moin_duree.addEventListener('click', function() {
+        document.getElementById('title1').innerHTML =JSON.stringify(recette_ascending) ;
+      });
+      
+      let  plus_duree= document.getElementById('plus_duree');
+      plus_duree.addEventListener('click', function() {
+        document.getElementById('title2').innerHTML =JSON.stringify(recette_descending) ;
+      });
+      
+      
+      
+      
+      let moin_value = document.getElementById('moins_value');
+      moin_value.addEventListener('click', function() {
+        document.getElementById('title3').innerHTML =JSON.stringify(value_asc) ;
+      });
+      
+      let  plus_value= document.getElementById('plus_value');
+      plus_value.addEventListener('click', function() {
+        document.getElementById('title4').innerHTML =JSON.stringify(value_des) ;
+      });</script>
 </body>
 </html>
