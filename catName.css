@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.container > h1{
+    border-top-color: #EAB728;
+    color: #F5D00B;
+    font-family: poppins;
+}
