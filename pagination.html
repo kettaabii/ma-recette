@@ -302,18 +302,7 @@
                 <input id="search-input" class="form-control me-2" type="search" placeholder="Rechercher une recette..." aria-label="Rechercher">
                
                 <button id="search-button" class="btn btn-outline-success" type="button">Rechercher</button>
-                <ul id="myUL" style="display: none;">
-                    <li><a href="#">Tarte aux pommes</a></li>
-                    <li><a href="#">Poulet rôti</a></li>
-                    <li><a href="#">Salade César</a></li>
-                    <li><a href="#">Spaghetti bolognaise</a></li>
-                    <li><a href="#">Muffins aux myrtilles</a></li>
-                    <li><a href="#">Sushi california</a></li>
-                    <li><a href="#">Soupe à l'oignon</a></li>
-                    <li><a href="#">Pancakes</a></li>
-                    <li><a href="#">Risotto aux champignons</a></li>
-                    <li><a href="#">Gâteau au chocolat</a></li>
-                </ul>
+                
             </form>
             
            
@@ -355,7 +344,7 @@
 <!-- Modal -->
 
 <div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered" style=" border-radius: 10px;border: 4px solid#FFBD59;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addRecipeModalLabel">Add Recipe</h5>
@@ -646,7 +635,6 @@
 
 // Function to add a new recipe
 function addRecipe() {
-    // Retrieve values from the form
     const recipeTitle = document.getElementById('recipeName').value;
     const recipeCategory = document.getElementById('recipeCategory').value;
     const recipeIngredients = document.getElementById('recipeIngredients').value.split(',');
@@ -654,45 +642,46 @@ function addRecipe() {
     const recipeSteps = document.getElementById('recipeSteps').value.split('\n');
     const recipeImage = document.getElementById('recipeImage').value;
 
-    // Create a new recipe object
+    // Création de la nouvelle recette
     const newRecipe = {
         id: recipes.length + 1,
         image: recipeImage,
         name: recipeTitle,
         rating: parseFloat(document.getElementById('recipeRating').value), // Convert rating to a number
         category: recipeCategory,
-        description: document.getElementById('recipeDescription').value, // Retrieve description
+        description: document.getElementById('recipeDescription').value, 
         ingredients: recipeIngredients,
         publicationDate: recipePublicationDate,
-        timeCooking: document.getElementById('recipeTimeCooking').value, // Retrieve timeCooking
+        timeCooking: document.getElementById('recipeTimeCooking').value, 
         steps: recipeSteps
     };
 
-    // Push the new recipe to the recipes array
+    // Ajout de la nouvelle recette à la liste recipes
     recipes.push(newRecipe);
 
-    // Save the updated recipes array to local storage
+    // Enregistrement de la liste mise à jour dans le localStorage
     localStorage.setItem('recipes', JSON.stringify(recipes));
 
-    // Display the updated list of recipes
-    displayRecipes(recipes);
-
-    // Clear the form fields
+    // Réinitialisation des champs du formulaire
     document.getElementById('addRecipeForm').reset();
 
-    // Close the modal
+    // Fermer la modal après l'ajout de la recette
     $('#addRecipeModal').modal('hide');
+
+    // Afficher un message de succès ou toute autre action nécessaire
+    alert('Recette ajoutée avec succès !');
+
+    // Mettre à jour l'affichage des recettes
+    displayRecipes(recipes);
 }
+
 
     
    
-        document.addEventListener("DOMContentLoaded", function() {
-           //Charger les recettes depuis le LocalStorage
-            if (localStorage.getItem('recipes')) {
-                recipes = JSON.parse(localStorage.getItem('recipes'));
-             
-          }  
-      });
+
+        recipes = JSON.parse(localStorage.getItem('recipes'));
+     
+
 
     
     function filterRecipesByName() {
