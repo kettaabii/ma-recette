@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; 
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+</style>
+</head>
+<body>
+
+<h2>Ma Recette </h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Rechercher sur une recette ..." title="Type in a name">
+
+<ul id="myUL">
+  <li><a href="#">Tajine de poulet poulet marocain</a></li>
+  <li><a href="#">Tajine de crevettes sauce chermoula</a></li>
+  <li><a href="#">Ragout de poisson et fruits de mer</a></li>
+  <li><a href="#">Poulet basquaise façon mercotte</a></li>
+  <li><a href="#">Dejaj mhamer</a></li>
+  <li><a href="#">pates et poulet</a></li>
+  <li><a href="#">Vegetable pasta bake</a></li>
+  <li><a href="#">Salade de pates facile</a></li>
+  <li><a href="#">Salade de macaroni aux oeufs à la coque</a></li>
+  <li><a href="#">Pates classiques</a></li>
+  <li><a href="#">Pates aux moules</a></li>
+  <li><a href="#">PATES au poulet</a></li>
+  <li><a href="#">Tacos </a></li>
+  <li><a href="#">Sandwitsh</a></li>
+  <li><a href="#">Hot dog</a></li>
+  <li><a href="#">Humburger maison</a></li>
+  <li><a href="#">Fajitas guacamole</a></li>
+  <li><a href="#">Croques mozzarella</a></li>
+  <li><a href="#">Muffin</a></li>
+  <li><a href="#">Cup cake</a></li>
+  <li><a href="#">Cookis</a></li>
+</ul>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+</body>
+</html>
