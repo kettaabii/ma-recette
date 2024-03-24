@@ -59,7 +59,7 @@ body {background: rgb(255,255,255);
 .card:hover {
     transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
-.col-sm>img:hover{
+.col-sm >a >img:hover{
     transform: scale(1.2);
 }
 .popup {
@@ -127,4 +127,25 @@ body {background: rgb(255,255,255);
   border-radius: 5px;
   cursor: pointer;
 }
+.rating-bar {
+  display: inline-block;
+  font-size: 20px; /* Adjust the size as needed */
+  color: #f0ad4e; /* Adjust the color as needed */
+}
 
+
+.rating-bar {
+  display: inline-block;
+  font-size: 20px; /* Adjust the size as needed */
+  color: #f0ad4e; /* Adjust the color as needed */
+}
+
+.rating-bar i {
+  margin-right: 5px; /* Adjust the spacing as needed */
+}
+
+/* Time Display */
+#popup-time {
+  font-size: 16px; /* Adjust the size as needed */
+  color: #333; /* Adjust the color as needed */
+}

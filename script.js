@@ -1,12 +1,19 @@
 const recipes = [
   {
-    name: "Chocolate Chip Cookies",
-    ingredients: ["flour", "sugar", "chocolate chips"],
-    image: "chocolate-chip-cookies.jpg",
-    rating: 0,
+    name: "Tagine",
+    ingredients: ["onions", "carrotes", "viande","huile d'olive"],
+    image: "TAGINE.png",
+    time: 30 ,
     comments: []
   },
-  // ... Add more recipes here
+   {
+      name: "couscous",
+      ingredients: ["legumes", "couscous", "poulet","huile d'olive"],
+      image: "couscous.png",
+      time: 30 ,
+      comments: []
+    }
+
 ];
 
 // Search Functionality
@@ -49,9 +56,9 @@ const popup = document.getElementById("recipe-popup");
 const popupImage = document.getElementById("popup-image");
 const popupName = document.getElementById("popup-name");
 const popupIngredients = document.getElementById("popup-ingredients");
-const ratingStars = document.querySelectorAll(".rating-star");
 const commentForm = document.getElementById("comment-form");
 const commentInput = document.getElementById("comment-input");
+const commentList = document.getElementById("comment-list"); // Add this line
 const popupClose = document.getElementById("popup-close");
 
 function showPopup(recipeIndex) {
@@ -60,19 +67,19 @@ function showPopup(recipeIndex) {
   popupImage.src = recipe.image;
   popupName.textContent = recipe.name;
   popupIngredients.innerHTML = ""; // Clear previous ingredients
+
   recipe.ingredients.forEach(ingredient => {
     const ingredientElement = document.createElement("li");
     ingredientElement.textContent = ingredient;
     popupIngredients.appendChild(ingredientElement);
   });
 
-  // Update rating stars
-  ratingStars.forEach((star, index) => {
-    star.classList.toggle("active", index < recipe.rating);
-  });
+
+
+  // Update time
+  document.getElementById("popup-time").textContent = recipe.time + " minutes";
 
   // Clear previous comments
-  const commentList = document.getElementById("comment-list");
   commentList.innerHTML = "";
 
   // Add existing comments
@@ -82,36 +89,10 @@ function showPopup(recipeIndex) {
     commentList.appendChild(commentElement);
   });
 
-  popup.style.display = "block";
+  const modal = new bootstrap.Modal(document.getElementById("recipe-popup"));
+  modal.show();
 }
-
 function closePopup() {
   popup.style.display = "none";
 }
 
-popupClose.addEventListener("click", closePopup);
-
-// Rating functionality
-ratingStars.forEach((star, index) => {
-  star.addEventListener("click", () => {
-    const recipeIndex = // ... (get the recipe index from the context)
-    recipes[recipeIndex].rating = index + 1;
-    showPopup(recipeIndex); // Update the popup with the new rating
-  });
-});
-
-// Commenting functionality
-
-
-// Commenting functionality
-commentForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  // Get the recipe index from a hidden input field or data attribute (assuming you have a way to store it)
-  const recipeIndex = document.getElementById("recipe-index").value; // Replace with your method
-
-  const comment = commentInput.value;
-  recipes[recipeIndex].comments.push(comment);
-  showPopup(recipeIndex); // Update the popup with the new comment
-  commentInput.value = "";
-});

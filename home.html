@@ -40,38 +40,55 @@
         <button class="btn btn-warning " id="search-button">Search</button>
 
     </div>
-    <div id="recipe-popup" class="popup">
-        <div class="popup-content">
-            <span id="popup-close" class="close">×</span>
-            <img id="popup-image" src="" alt="Recipe Image">
-            <h2 id="popup-name">Recipe Name</h2>
-            <ul id="popup-ingredients">
-                <!-- Recipe ingredients will be dynamically added here -->
-            </ul>
+    <div id="recipe-popup" class="modal fade" tabindex="-1" aria-labelledby="recipePopupLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="recipePopupLabel">Recipe Name</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="popup-image" src="" alt="Recipe Image" class="img-fluid">
+                            <h2 id="popup-name">Recipe Name</h2>
+                            <ul id="popup-ingredients">
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
 
-            <!-- Rating -->
-            <div class="rating">
-                <span class="rating-star">★</span>
-                <span class="rating-star">★</span>
-                <span class="rating-star">★</span>
-                <span class="rating-star">★</span>
-                <span class="rating-star">★</span>
+
+
+                            <!-- Time -->
+                            <p>Time: <span id="popup-time"></span></p>
+
+                            <!-- Steps -->
+                            <ol id="popup-steps">
+                                <!-- Recipe steps will be dynamically added here -->
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Comment Form -->
+                    <form id="comment-form">
+                        <div class="mb-3">
+                            <label for="comment-input" class="form-label">Leave a comment</label>
+                            <textarea class="form-control" id="comment-input" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+                    <!-- Comment List -->
+                    <ul id="comment-list">
+                        <!-- Comments will be dynamically added here -->
+                    </ul>
+                </div>
             </div>
-
-            <!-- Comments -->
-            <h3>Comments</h3>
-            <ul id="comment-list">
-                <!-- Comments will be dynamically added here -->
-            </ul>
-
-            <!-- Comment Form -->
-            <form id="comment-form">
-                <input type="text" id="comment-input" placeholder="Add a comment...">
-                <button type="submit">Submit</button>
-            </form>
         </div>
     </div>
-    <div id="results-container" ></div>
+
+
+ <div id="results-container" ></div>
 
 
 </div>
@@ -121,20 +138,28 @@
     <div class="container d-flex flex-content " >
         <div class="row ">
             <div class="col-sm  d-flex flex-column  align-items-center">
-                <img src="tarte%20.png" class="rounded-circle w-75 justify-content-center" >
-                <h2>Patisserie</h2>
+                <a href="Pages_de_Recettes.html">
+                <img src="tarte%20.png" class="rounded-circle w-75 justify-content-center"  ></a>
+                <h2>Patisserie</h2></a>
             </div>
+
             <div class="col-sm d-flex flex-column  align-items-center">
-                <img src="couscous.png" class="rounded-circle w-75 " >
-                <h2>Traditionnel</h2>
+                <a href="Pages_de_Recettes.html">
+                    <img src="couscous.png" class="rounded-circle w-75 " ></a>
+                    <h2>Traditionnel</h2>
             </div>
             <div class="col-sm  d-flex flex-column  align-items-center">
-                <img src="spagetti.png" class="rounded-circle w-75" >
+                <a href="Pages_de_Recettes.html">
+                    <img src="spagetti.png" class="rounded-circle w-75" ></a>
                 <h2>International</h2>
+
             </div>
             <div class="col-sm  d-flex flex-column  align-items-center">
+                <a href="Pages_de_Recettes.html">
                 <img src="vegan.png" class="rounded-circle w-75" >
+                </a>
                 <h2>Vegetarian</h2>
+
             </div>
         </div>
     </div>
