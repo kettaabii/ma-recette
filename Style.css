@@ -149,3 +149,42 @@ body {background: rgb(255,255,255);
   font-size: 16px; /* Adjust the size as needed */
   color: #333; /* Adjust the color as needed */
 }
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+    .container {
+        width: 90%; /* Adjust container width */
+    }
+
+    .plat-left {
+        width: 50%; /* Adjust image width */
+    }
+
+    .Box-Home {
+        margin-top: 20px; /* Adjust spacing */
+    }
+
+    h1, h2 {
+        font-size: 1.8em; /* Increase font size */
+    }
+}
+
+/* Smartphone Styles */
+@media only screen and (max-width: 767px) {
+    .container {
+        width: 100%; /* Full width on small screens */
+    }
+
+    .plat-left, .Box-Home {
+        width: 100%; /* Make elements full width */
+    }
+    #platleft {
+           display:none;
+        }
+    #devenezchef {
+    display:flex;
+    flex-direction:column;}
+    h1, h2 {
+        font-size: 1.5em; /* Increase font size further */
+    }
+
+    /* Hide or adjust other elements as needed */
+}
