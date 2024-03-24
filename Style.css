@@ -59,3 +59,7 @@ body {background: rgb(255,255,255);
 .card:hover {
     transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+.col-sm>img:hover{
+    transform: scale(1.2);
+}
+
