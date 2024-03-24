@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma Recette</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css">
+          <link rel="stylesheet" href="css/bootstrap.min.css">
+          <link rel="stylesheet" href="css/all.min.css">
+          <link rel="stylesheet" href="css/style.css">
+          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/daydream');
+        @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+
+        body {
+            background: rgb(255, 255, 255);
+            background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 0.8134312913907285) 0%, rgba(185, 217, 235, 1) 100%);
+            background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0.8134312913907285) 0%, rgba(185, 217, 235, 1) 100%);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.8134312913907285) 0%, rgba(185, 217, 235, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#b9d9eb", GradientType=1);
+            background-repeat: no-repeat;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            text-decoration: none;
+        }
+
+        .title {
+            background-image: url(ff11283dbd11b92210327c7c115ee166.jpg);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            padding: 2%;
+        }
+
+        .title>p {
+            color:rgb(79, 55, 150) ;
+            font-size: 30px;
+        }
+
+        .title>h1 {
+            font-size: 40px;
+            color:brown;
+        }
+        .title>h2{
+            color:brown;
+        }
+        .custom-previous-button {
+            background-color: #C6BE00;
+            border-color: yellow;
+            color: #fff; 
+        }
+        .custom-next-button {
+            background-color: #C6BE00;
+            border-color: yellow;
+           
+            color: #fff;
+        }
+     
+        .custom-view-button {
+            background-color: #BD5521;
+            border-color: yellow;
+            border-radius: 20px; 
+        }
+        .custom-view-button1 {
+            background-color: white ;
+            border-color:yellow;
+            border-radius: 20px; 
+            color:#BD5521;
+
+        }
+        .comment {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .comment strong {
+            color: #007bff;
+        }
+        .buuu{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+       
+          
+            .w3-center .w3-bar {
+                display: inline-block;
+                width: auto;
+                flex-direction: column;
+            }
+            .card {
+             
+                background-color: #fff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                border-color: yellow;
+                transition: all 0.2s ease-in-out;
+              }
+              .card:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+                transform: translateY(-2px);
+              }
+              .note-section {
+                position: fixed;
+                top: 50px; /* Position verticale */
+                left: 20px; /* Position horizontale */
+                width: 250px;
+                background-color: #f8f9fa;
+                border: 1px solid #ccc;
+                padding: -2px;
+                overflow-y: auto; /* Permet le défilement si nécessaire */
+                max-height: calc(100vh - 100px); /* Limite la hauteur */
+            }
+            
+            .note-section h2 {
+                margin-top: 0;
+                font-size: 20px;
+            }
+            
+            .note-list {
+                list-style-type: none;
+                padding: 0;
+            }
+            
+            .note-list li {
+                margin-bottom: 10px;
+            }
+            
+            .note-list li h3 {
+                margin-bottom: 5px;
+                font-size: 16px;
+            }
+            
+            .note-list li p {
+                margin: 0;
+                font-size: 14px;
+            }
+            .bg-danger {
+             background-color:#BD5521!important;
+            }
+            .progress{
+                display: flex;
+                flex-direction: row;
+                gap:20px;
+            }
+          
+
+
+.interactive-section {
+ display: flex;
+ flex-direction: column;
+ gap: 50Px;
+}
+
+.textare{
+    height: 200px;
+    border-radius: 10px;
+   
+    border: 4px solid#FFBD59;
+}
+.textareA{
+    border-radius: 10px;
+   
+   border: 4px solid#FFBD59;
+}
+.slidecontainer{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+.SUBMIT{
+    background-color: #FFBD59;
+}
+.slidecontainer .custom-range::-webkit-slider-thumb {
+  background: #FFBD59;
+}
+
+.slidecontainer .custom-range::-moz-range-thumb {
+  background: #FFBD59;
+}
+
+.slidecontainer .custom-range::-ms-thumb {
+  background: #FFBD59;
+}
+.w3-teal, .w3-hover-teal:hover {
+    color: #fff !important;
+}
+.w3-xlarge {
+    font-size: 24px !important;
+}
+.w3-display-topright {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.bg-danger {
+  background-color: #FFBD59 !important;
+}
+.hidden {
+    display: none;
+}
+       :root {
+        --primary-color: #BD5521;
+        --secondary-color: #FFBD59;
+    }
+
+   
+    .btn-custom {
+        background-color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        color: white;
+        border-radius: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    /* Button hover state */
+    .btn-custom:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+    }
+
+    /* Button active state */
+    .btn-custom:active {
+        transform: translateY(1px);
+    }
+.ss{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    width: 450px;
+    border-radius: 10px;border: 5px solid#FFBD59;
+    gap: 50px;
+}
+.container {
+    margin-top: 20px;
+}
+.container > h1{
+    
+    border-top-color: #EAB728;
+    color: #F5D00B;
+    font-family: poppins;
+    
+}
+.row{
+    margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="home.html">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#addRecipeModal">Add Recipe</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Catégorie
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item category" href="#" data-category="PLATS PRINCIPAUX"
+                               style="background-color: aliceblue;">PLATS PRINCIPAUX</a></li>
+                        <li><a class="dropdown-item category" href="#" data-category="BURGERS">BURGERS</a></li>
+                        <li><a class="dropdown-item category" href="#" data-category="PATES ET RIZ">PATES ET RIZ</a>
+                        </li>
+                        <li><a class="dropdown-item category" href="#" data-category="BISCUITS">BISCUITS</a></li>
+                        <li><a class="dropdown-item category" href="#" data-category="DESSERTS">DESSERTS</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="comments.html">Voir les Commentaires</a>
+                </li>
+            </ul>
+         
+            <form class="d-flex">
+                <input id="search-input" class="form-control me-2" type="search" placeholder="Rechercher une recette..." aria-label="Rechercher">
+               
+                <button id="search-button" class="btn btn-outline-success" type="button">Rechercher</button>
+                
+            </form>
+            
+           
+            
+            
+            
+        </div>
+    </div>
+</nav>
+<div class="title">
+    <h1>Catégories des recettes de cuisine :</h1>
+    <h2>Cette page est une mine d'inspiration culinaire, offrant une gamme variée de plats délicieux. Des recettes
+        simples aux créations gastronomiques, elle vous invite à explorer de nouvelles saveurs et à découvrir des idées
+        pour tous les goûts.</h2>
+</div>
+<div class="container">
+    <section class="container border-top border-bottom border-3">
+        <h1 class="fw-bold text-center">filtrer par </h1>
+    </section>
+    <select class="form-select mb-3" >
+        <option value="Date publicationDate">Date publicationDate</option>
+        <option value="time">time</option>
+        <option value="rating">rating</option>
+    </select>
+    
+    <div class="row" id="recipe-list">
+    </div>
+    <div class="w3-center w3-padding-32">
+        <div class="w3-bar">
+            <a href="#" id="previous-button" class="w3-bar-item w3-button w3-hover-black">&laquo;</a>
+            <a href="#" class="page-link custom-page-link w3-bar-item w3-button" onclick="changePage(1)">1</a>
+            <a href="#" class="page-link custom-page-link w3-bar-item w3-button" onclick="changePage(2)">2</a>
+            <a href="#" class="page-link custom-page-link w3-bar-item w3-button" onclick="changePage(3)">3</a>
+            <a href="#" id="next-button" class="w3-bar-item w3-button w3-hover-black">&raquo;</a>
+        </div>
+    </div>
+    
+</div>
+<!-- Modal -->
+
+<div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style=" border-radius: 10px;border: 4px solid#FFBD59;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addRecipeModalLabel">Add Recipe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addRecipeForm">
+                    <div class="mb-3">
+                        <label for="recipeName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="recipeName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeImage" class="form-label">Image URL</label>
+                        <input type="text" class="form-control" id="recipeImage" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="recipeDescription" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeIngredients" class="form-label">Ingredients</label>
+                        <input type="text" class="form-control" id="recipeIngredients" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeCategory" class="form-label">Catégorie:</label>
+                        <select class="form-select" id="recipeCategory" required>
+                            <option selected disabled>Sélectionner une catégorie</option>
+                            <option value="PLATS PRINCIPAUX">Plats Principaux</option>
+                            <option value="BURGERS">Burgers</option>
+                            <option value="PATES ET RIZ">Pâtes et Riz</option>
+                            <option value="BISCUITS">Biscuits</option>
+                            <option value="DESSERTS">Desserts</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeRating" class="form-label">Rating</label>
+                        <input type="number" class="form-control" id="recipeRating" min="0" max="5" step="0.1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipePublicationDate" class="form-label">Publication Date</label>
+                        <input type="date" class="form-control" id="recipePublicationDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeTimeCooking" class="form-label">Time Cooking</label>
+                        <input type="text" class="form-control" id="recipeTimeCooking">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeSteps" class="form-label">Steps (each step separated by a comma)</label>
+                        <input type="text" class="form-control" id="recipeSteps" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-primary" onclick="addRecipe()">Ajouter Recette</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="note-section">
+    <h2>Ma Liste de Recettes</h2>
+    <ul id="myRecipeList" class="note-list"></ul>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script>
+    // Exemple de données de recettes
+    let recipes = [
+    {id: 1, image: "Biscuits/CUP-CAKE.webp", name: "CUP-CAKE", publicationDate:"2024-03-23",Ingredients: "couscous", description: "Délicieuse tarte aux pommes faite avec des pommes fraîches et une croûte croustillante.",publicationDate:"2024-03-23", rating: 4.5, category: "DESSERTS",timeCooking: "2 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."],},
+    {id: 2, image: "Pates et Riz/Pâtes-aux-moules.jpg", name: "Pâtes-aux-moules",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Poulet juteux rôti au four avec des herbes et des épices.", rating: 4.0, category: "PLATS PRINCIPAUX",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."], },
+    {id: 3, image: "plats principaux/Poulet-basquaise-façon-Mercotte.webp", name: "Poulet",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Salade croustillante aux feuilles de laitue, croûtons, parmesan et vinaigrette César.", rating: 3.8, category: "PLATS PRINCIPAUX",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."], },
+    {id: 4, image: "burgers/fajitas-guacamole.webp", name: "Ragoût",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Spaghetti garni d'une sauce bolognaise maison savoureuse à la viande et aux tomates.", rating: 4.2, category: "PLATS PRINCIPAUX",timeCooking: "3 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."], },
+    {id: 5, image: "burgers/SANDWITSH.webp", name: "Tajine de poulet marocain",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Délicieux muffins moelleux remplis de myrtilles fraîches.", rating: 4.7, category: "DESSERTS",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."], },
+    {id: 6, image: "burgers/Hamburger-maison.webp", name: "Tajine-de-crevettes",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Rouleaux de sushi remplis de crabe, d'avocat et de concombre, enveloppés dans du riz et de l'algue nori.", rating: 4.9, category: "PLATS PRINCIPAUX",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."],},
+    {id: 7, image: "burgers/SANDWITSH.webp", name: "Soupe à l'oignon",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Soupe chaude et réconfortante à base d'oignons caramélisés et de bouillon de poulet.", rating: 3.5, category: "BURGERS",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."],},
+    {id: 8, image: "burgers/Hamburger-maison.webp", name: "SANDWITSHn",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Délicieux pancakes moelleux servis avec du sirop d'érable et du beurre.", rating: 4.3, category: "BURGERS",timeCooking: "2 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."], },
+    {id: 9, image: "plats principaux/Ragoût-de-poisson-et-fruits-de-mer.png", name: "fajitas",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Risotto crémeux aux champignons, cuit lentement avec du bouillon et du vin blanc.", rating: 4.6, category: "BURGERS",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."],},
+    {id: 11, image: "Biscuits/CUP-CAKE.webp", name: "CUP-CAKE",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Gâteau moelleux au chocolat noir avec un glaçage onctueux.", rating: 4.8, category: "BISCUITS",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."] },
+    {id: 12, image: "Biscuits/COOKIS.webp", name: "COOKIS",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Gâteau moelleux au chocolat noir avec un glaçage onctueux.", rating: 4.8, category: "BISCUITS",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."] },
+    {id: 13, image: "Pates et Riz/Pâtes-aux-moules.jpg", name: "Pâtes-aux-moules",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Gâteau moelleux au chocolat noir avec un glaçage onctueux.", rating: 4.8, category: "BISCUITS",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."] },
+    {id: 14, image: "Pates et Riz/pates au poulet.jpg", name: "pates au poulet",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Gâteau moelleux au chocolat noir avec un glaçage onctueux.", rating: 4.8, category: "PATES ET RIZ",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."] },
+    {id: 15, image: "Pates et Riz/Pâtes-aux-moules.jpg", name: "Pâtes-aux-moules",publicationDate:"2024-03-23", Ingredients: "Tarte aux pommes", description: "Gâteau moelleux au chocolat noir avec un glaçage onctueux.", rating: 4.8, category: "PATES ET RIZ",timeCooking: "1 heure",steps: ["Préchauffer le four à 180°C.","Préparer la pâte et la laisser reposer.","Éplucher et couper les pommes.","Disposer les pommes sur la pâte.","Cuire au four pendant 30-40 minutes jusqu'à ce que la croûte soit dorée."] }
+];
+
+
+    // Fonction pour afficher les recettes
+    
+    function displayRecipes(recipes) {
+   
+        const recipeList = document.getElementById("recipe-list");
+        recipeList.innerHTML = "";
+    
+        recipes.forEach(recipe => {
+            const recipeItem = document.createElement("div");
+            recipeItem.classList.add("col-md-4", "mb-4");
+    
+            const card = `
+                <div class="card">
+                    <img src="${recipe.image}" class="card-img-top" alt="${recipe.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${recipe.name}</h5>
+                      
+                        <p class="card-text">Ingredients: ${recipe.Ingredients}</p>
+                        <p class="card-text">Publication Date: ${recipe.publicationDate}</p>
+                        <p class="card-text">Catégorie: ${recipe.category}</p>
+                        
+                    <p class="card-text">Time Cooking: ${recipe.timeCooking}</p>
+                    
+                    <div class="position">
+                           
+                           <div class="progress">
+                               <div class="progress-bar bg-danger" id="progress-bar-${recipe.id}" role="progressbar" style="width: ${recipe.rating *10}%; color:#FFBD59;"<div>
+                                   aria-valuenow="${recipe.rating*10 }" aria-valuemin="0" aria-valuemax="10"></div>
+                                
+                           </div>
+                           <p id="rating-value-${recipe.id}" class="card-text">Rating: ${recipe.rating}/10</p>
+                           
+
+                    </div>
+                        <div class="buuu">
+                            <button class="btn btn-primary custom-view-button" onclick="displayDescription(${recipe.id})">Voir la recette</button>
+                            <button class="btn btn-success custom-view-button1" onclick="addToMyList(${recipe.id})">Ajouter à ma liste</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="description-section" id="description-${recipe.id}" style="display: none;">
+                    <form class="ss">
+                        <div>
+                            <img src="${recipe.image}" class="card-img-top" alt="${recipe.name}">
+                            <h6>Description:</h6>
+                            <p>${recipe.description}</p>
+                            <h1>${recipe.name}</h1>
+                            <p>description les étapes</p>
+                            <p class="card-text">Steps:</p>
+                    <ul>
+                        ${recipe.steps ? recipe.steps.map(step => `<li>${step}</li>`).join('') : '<li>Steps not specified</li>'}
+                    </ul>
+                        </div>
+                        <div class="interactive-section">
+                            <div class="mb-3">
+        <label for="progressInput-${recipe.id}">Progression:</label>
+        <input type="number" class="form-control" id="progressInput-${recipe.id}" min="0" max="10" step="0.1" value="${recipe.rating || 0}" onchange="updateProgress(${recipe.id})">
+    </div>
+    <!-- Reste du contenu du formulaire -->
+    <p>rating review</p>
+    <div class="progress">
+        <div class="progress-bar bg-danger" id="progress-bar-${recipe.id}" role="progressbar" style="width: ${recipe.rating}%; color:#FFBD59;"
+            aria-valuenow="${recipe.rating }" aria-valuemin="0" aria-valuemax="10"></div>
+    </div>
+    <p id="rating-value-${recipe.id}" class="card-text">Rating: ${recipe.rating}/10</p>
+                            <div class="time">Time :${recipe.timeCooking} min</div>
+                            <form class="comment-form">
+                                <div class="mb-3">
+                                    <label for="commentName">Nom:</label>
+                                    <input type="text" class="form-control textareA" id="commentName-${recipe.id}" placeholder="Votre nom">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="commentText">Commentaire:</label>
+                                    <textarea class="form-control textare" id="commentText-${recipe.id}" placeholder="leave a comment"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-primary SUBMIT" onclick="addComment(${recipe.id})">Ajouter Commentaire</button>
+                                <button class="btn btn-secondary" onclick="closeDescription(${recipe.id})">Fermer</button>
+                            </form>
+                            <div class="comments-list" id="comments-${recipe.id}"></div>
+                        </div>
+                    </form>
+                </div>
+            `;
+            recipeItem.innerHTML = card;
+            recipeList.appendChild(recipeItem);
+    
+            const ratingValue = document.getElementById(`rating-value-${recipe.id}`);
+            ratingValue.textContent = `Rating: ${recipe.rating}/10`;
+    
+           
+        });
+    }
+
+    
+    
+    function addComment(recipeId) {
+        const commentName = document.getElementById(`commentName-${recipeId}`).value;
+        const commentText = document.getElementById(`commentText-${recipeId}`).value;
+    
+        // Créer un objet commentaire
+        const newComment = {
+            recipeId: recipeId,
+            name: commentName,
+            text: commentText
+        };
+    
+        let allComments = JSON.parse(localStorage.getItem('allComments')) || [];
+    
+        allComments.push(newComment);
+    
+        localStorage.setItem('allComments', JSON.stringify(allComments));
+    
+        window.location.href = 'comments.html';
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+        const PAGE_SIZE = 6;
+        let currentPage = 1;
+    
+        const paginationLinks = document.querySelectorAll(".page-link");
+        paginationLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                const pageNumber = parseInt(e.target.innerText);
+                if (!isNaN(pageNumber)) {
+                    currentPage = pageNumber;
+                    displayRecipes(paginate(recipes, PAGE_SIZE, currentPage));
+                }
+            });
+        });
+    
+        document.getElementById("previous-button").addEventListener("click", function(e) {
+            e.preventDefault();
+            if (currentPage > 1) {
+                currentPage--;
+                displayRecipes(paginate(recipes, PAGE_SIZE, currentPage));
+            }
+        });
+    
+        document.getElementById("next-button").addEventListener("click", function(e) {
+            e.preventDefault();
+            const totalPages = Math.ceil(recipes.length / PAGE_SIZE);
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayRecipes(paginate(recipes, PAGE_SIZE, currentPage));
+            }
+        });
+    
+        displayRecipes(paginate(recipes, PAGE_SIZE, currentPage));
+    });
+    function displayDescription(recipeId) {
+        const recipe = recipes.find(r => r.id === recipeId);
+        if (recipe) {
+            const descriptionSection = document.getElementById(`description-${recipe.id}`);
+            const isVisible = descriptionSection.style.display === 'block';
+    
+            // Fermer toutes les autres descriptions
+            const allDescriptionSections = document.querySelectorAll('.description-section');
+            allDescriptionSections.forEach(section => {
+                section.style.display = 'none';
+            });
+    
+            if (!isVisible) {
+                descriptionSection.style.display = 'block';
+            }
+        }
+      
+    }
+    
+    
+    function closeDescription(recipeId) {
+        const descriptionSection = document.getElementById(`description-${recipeId}`);
+        if (descriptionSection) {
+            descriptionSection.style.display = 'none';
+        }
+    }
+    
+    
+        // filtrer  par catégorie
+       
+    
+        function filterRecipesByCategory(category) {
+            const filteredRecipes = recipes.filter(recipe => recipe.category === category);
+            displayRecipes(filteredRecipes);
+        }
+    
+        // cat
+        const categoryLinks = document.querySelectorAll(".category");
+        categoryLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                const category = e.target.dataset.category;
+                filterRecipesByCategory(category);
+            });
+        });
+    
+  
+
+
+// Function to add a new recipe
+function addRecipe() {
+    const recipeTitle = document.getElementById('recipeName').value;
+    const recipeCategory = document.getElementById('recipeCategory').value;
+    const recipeIngredients = document.getElementById('recipeIngredients').value.split(',');
+    const recipePublicationDate = document.getElementById('recipePublicationDate').value;
+    const recipeSteps = document.getElementById('recipeSteps').value.split('\n');
+    const recipeImage = document.getElementById('recipeImage').value;
+
+    // Création de la nouvelle recette
+    const newRecipe = {
+        id: recipes.length + 1,
+        image: recipeImage,
+        name: recipeTitle,
+        rating: parseFloat(document.getElementById('recipeRating').value), // Convert rating to a number
+        category: recipeCategory,
+        description: document.getElementById('recipeDescription').value, 
+        ingredients: recipeIngredients,
+        publicationDate: recipePublicationDate,
+        timeCooking: document.getElementById('recipeTimeCooking').value, 
+        steps: recipeSteps
+    };
+
+    // Ajout de la nouvelle recette à la liste recipes
+    recipes.push(newRecipe);
+
+    // Enregistrement de la liste mise à jour dans le localStorage
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+
+    // Réinitialisation des champs du formulaire
+    document.getElementById('addRecipeForm').reset();
+
+    // Fermer la modal après l'ajout de la recette
+    $('#addRecipeModal').modal('hide');
+
+    // Afficher un message de succès ou toute autre action nécessaire
+    alert('Recette ajoutée avec succès !');
+
+    // Mettre à jour l'affichage des recettes
+    displayRecipes(recipes);
+}
+
+
+    
+   
+
+        recipes = JSON.parse(localStorage.getItem('recipes'));
+     
+
+
+    
+    function filterRecipesByName() {
+        const input = document.getElementById("search-input").value.toUpperCase();
+        const filteredRecipes = recipes.filter(recipe => recipe.name.toUpperCase().includes(input));
+        displayRecipes(filteredRecipes);
+    }
+    document.getElementById("search-button").addEventListener("click", filterRecipesByName);
+    document.getElementById("search-input").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            filterRecipesByName();
+        }
+    });
+    function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("search-input");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        ul.style.display = "block"; 
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            
+           
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    
+    const recipeLinks = document.querySelectorAll("#myUL li a");
+    recipeLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            const recipeName = this.textContent;
+            document.getElementById("search-input").value = recipeName;
+            myFunction(); 
+        });
+    });
+    
+    // Ajouter un événement de clic sur le bouton de recherche
+    const searchButton = document.getElementById("search-button");
+    searchButton.addEventListener("click", function() {
+        myFunction(); // Appeler la fonction de recherche lorsque le bouton est cliqué
+    });
+    
+    function addToMyList(recipeId) {
+        let myRecipeList = JSON.parse(localStorage.getItem('myRecipeList')) || [];
+        const existingRecipe = myRecipeList.find(recipe => recipe.id === recipeId);
+    
+        if (!existingRecipe) {
+            const recipeToAdd = recipes.find(recipe => recipe.id === recipeId);
+            if (recipeToAdd) {
+                myRecipeList.push(recipeToAdd);
+                localStorage.setItem('myRecipeList', JSON.stringify(myRecipeList));
+                alert('Recette ajoutée à votre liste!\n\n' + recipeToAdd.description);
+                displayMyRecipeList(); 
+            } else {
+                alert('Recette non trouvée.');
+            }
+        } else {
+            alert('Cette recette est déjà dans votre liste!');
+            displayMyRecipeList();
+        }
+    }
+    
+   
+    function displayMyRecipeList() {
+        const myRecipeListContainer = document.getElementById('myRecipeList');
+        myRecipeListContainer.innerHTML = ' '; 
+    
+        let myRecipeList = JSON.parse(localStorage.getItem('myRecipeList')) || [];
+        if (myRecipeList.length === 0) {
+            myRecipeListContainer.innerHTML = '<p>Aucune recette dans votre liste.</p>';
+            return;
+        }
+    
+        myRecipeList.forEach(recipe => {
+            const recipeItem = document.createElement('li');
+            recipeItem.innerHTML = `
+                <h3>${recipe.name}</h3>
+                <p>Ingrédients: ${recipe.Ingredients}</p>
+                <p>Description: ${recipe.description}</p>
+            `;
+            myRecipeListContainer.appendChild(recipeItem);
+        });
+        const closeButton = document.createElement('button');
+    closeButton.textContent = 'Fermer';
+    closeButton.className = 'btn btn-secondary';
+    closeButton.onclick = function() {
+        myRecipeListContainer.innerHTML = ''; // Clear the list
+    };
+    myRecipeListContainer.appendChild(closeButton);
+    }
+
+    function paginate(array, page_size, page_number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+function updateProgressInList(recipeId, newProgress) {
+    newProgress = parseFloat(newProgress);
+    const recipe = recipes.find(r => r.id === recipeId);
+    
+    if (recipe && !isNaN(newProgress) && newProgress >= 0 && newProgress <= 10) {
+        recipe.rating = newProgress;
+
+        // Update the rating based on the progress
+        const newRating = newProgress * 10;
+        recipe.rating = newRating.toFixed(1); // Round the rating to one decimal place
+
+        // Update the progress bar in the main recipe list
+        const progressBar = document.getElementById(`progress-bar-${recipeId}`);
+        if (progressBar) {
+            progressBar.style.width = `${newProgress * 10}%`;
+            progressBar.setAttribute('aria-valuenow', newProgress * 10);
+        }
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+
+        // Update the rating text in the main recipe list
+        const ratingValue = document.getElementById(`rating-value-${recipeId}`);
+        if (ratingValue) {
+            ratingValue.textContent = `Rating: ${recipe.rating}/10`;
+        }
+
+        // You can also save the progress and rating to localStorage if needed
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+
+        alert('Progression et notation mises à jour avec succès !');
+    } else {
+        alert('Veuillez entrer une valeur de progression valide (entre 0 et 10).');
+    }
+}
+function updateProgress(recipeId) {
+        const progressInput = document.getElementById(`progressInput-${recipeId}`);
+        const newProgress = parseInt(progressInput.value, 10);
+        
+        if (!isNaN(newProgress) && newProgress >= 0 && newProgress <= 100) {
+            updateProgressInList(recipeId, newProgress); // Mettre à jour la progression dans la liste principale des recettes
+            localStorage.setItem('recipes', JSON.stringify(recipes));
+        } else {
+            alert('Veuillez entrer une valeur de progression valide (entre 0 et 10).');
+        }
+        
+
+    }
+    
+    // Fonction pour trier les recettes par date de publication en ordre croissant
+   // Fonction pour trier les recettes par date de publication en ordre descendant
+const sortByPublicationDateDescending = (recipes) => {
+    return recipes.slice().sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
+};
+
+// Fonction pour trier les recettes par temps de cuisson en ordre descendant
+const sortByTimeCookingDescending = (recipes) => {
+    return recipes.slice().sort((a, b) => {
+        const timeA = parseInt(b.timeCooking.split(' ')[0]);
+        const timeB = parseInt(a.timeCooking.split(' ')[0]);
+        return timeA - timeB;
+    });
+};
+
+// Fonction pour trier les recettes par notation en ordre descendant
+const sortByRatingDescending = (recipes) => {
+    return recipes.slice().sort((a, b) => b.rating - a.rating);
+};
+
+
+
+document.querySelector('.form-select').addEventListener('change', function() {
+    const sortBy = this.value; 
+    switch(sortBy) {
+        case 'Date publicationDate':
+            
+            displayRecipes(sortByPublicationDateDescending(recipes));
+            break;
+        case 'time':
+            displayRecipes(sortByTimeCookingDescending(recipes));
+            break;
+        case 'rating':
+            displayRecipes(sortByRatingDescending(recipes));
+            break;
+        default:
+            displayRecipes(recipes);
+    }
+});
+</script>
+</body>
+<footer class="p-3 mb-2 bg-body-tertiary border border-primary">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block ">
+        <span>social media</span>
+      </div>
+      <!-- Left -->
+  
+      <!-- Right -->
+      <div class="col-1 d-flex justify-content-between">
+        <a href="" class="me-4"><i class="fa-brands fa-facebook"></i></a>
+        <a href="" class="me-4"><i class="fa-brands fa-twitter"></i></a>
+        <a href="" class="me-4"><i class="fa-brands fa-google-plus-g"></i></a>
+
+       
+      </div>
+      <!-- Right -->
+    </section>
+   
+  <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger"></div>
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>website name
+            </h6>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor, rem blanditiis tempora quos debitis et aperiam! Eaque repudiandae exercitationem amet enim consequuntur alias laboriosam possimus, fugit, quia praesentium molestias repellat.
+            </p>
+          </div>
+         
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              LINKS TITLE
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">LINK 1</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">LINK 2</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">LINK 3</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">LINK</a>
+            </p>
+          </div>
+          
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+
+            <p ><i class="fa-solid fa-house-chimney me-3"></i>2500,BENNI MELLAL</p>
+    <p><i class="fa-solid fa-envelope me-3"></i>marecette@gmail.com</p>
+    <p><i class="fa-solid fa-phone me-3"></i>+ 2126 71 34 56 56</p>
+   <p><i class="fas fa-print me-3"></i>05 22 56 22 56</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Copyright -->
+    <div class="text-center p-4 border border-primary" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2024 Copyright:
+      <a class="text-reset fw-bold" href="">marecette.com</a>
+    </div>
+  </footer>
+</html>
+        
